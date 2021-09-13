@@ -1,6 +1,6 @@
 [package]
 name = "serde_cbor"
-version = "0.11.2"
+version = "0.11.3"
 authors = [
     "Pyfisch <pyfisch@posteo.org>",
     "Steven Fackler <sfackler@gmail.com>"]
@@ -17,17 +17,24 @@ travis-ci = { repository = "pyfisch/cbor" }
 maintenance = { status = "as-is" }
 
 [dependencies]
-half = "1.2.0"
-serde = { version = "1.0.14", default-features = false }
+half = { git = "https://github.com/raoulstrackx/half-rs.git", branch = "raoul/stdlib", default-features = false } #"1.2.0"
+serde = { git = "https://github.com/raoulstrackx/serde.git", branch = "raoul/stdlib", default-features = false }
+core = { version = "1.0.0", optional = true, package = "rustc-std-workspace-core" }
+alloc = { version = "1.0.0", optional = true, package = "rustc-std-workspace-alloc" }
+compiler_builtins = { version = "0.1.0", optional = true }
 
 [dev-dependencies]
 serde_derive = { version = "1.0.14", default-features = false }
+
+[patch.crates-io]
+serde = { path = "/home/raoul/Documents/serde/serde" }
 
 [features]
 default = ["std"]
 # Uses `alloc` library and adds support for vector functions with
 # `no_std`.
-alloc = ["serde/alloc"]
+#alloc = ["serde/alloc"]
 std = ["serde/std" ]
+rustc-dep-of-std = ["core", "alloc", "compiler_builtins/rustc-dep-of-std", "serde/rustc-dep-of-std", "half/rustc-dep-of-std"]
 unsealed_read_write = []
 tags = []
