@@ -323,7 +323,7 @@
 extern crate std;
 
 #[cfg(feature = "alloc")]
-extern crate alloc;
+extern crate dep_alloc as alloc;
 
 pub mod de;
 pub mod error;
