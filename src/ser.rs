@@ -1,7 +1,9 @@
 //! Serialize a Rust data structure to CBOR data.
 
-#[cfg(feature = "alloc")]
+#[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::vec::Vec;
+#[cfg(feature = "std")]
+use std::vec::Vec;
 
 #[cfg(feature = "std")]
 pub use crate::write::IoWrite;

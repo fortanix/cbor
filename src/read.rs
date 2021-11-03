@@ -1,5 +1,7 @@
-#[cfg(feature = "alloc")]
+#[cfg(all(not(feature = "std"), feature = "alloc"))]
 use alloc::{vec, vec::Vec};
+#[cfg(feature = "std")]
+use std::vec::Vec;
 #[cfg(feature = "std")]
 use core::cmp;
 use core::mem;
