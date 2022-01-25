@@ -18,7 +18,7 @@ maintenance = { status = "as-is" }
 
 [dependencies]
 half = { git = "https://github.com/fortanix/half-rs.git", branch = "fortanixvme" }
-serde = { git = "https://github.com/fortanix/serde.git", branch = "master", default-features = false }
+serde = { git = "https://github.com/fortanix/serde.git", branch = "raoul/stdlib_1.0.136", default-features = false }
 core = { version = "1.0.0", optional = true, package = "rustc-std-workspace-core" }
 dep_alloc = { version = "1.0.0", optional = true, package = "rustc-std-workspace-alloc" }
 compiler_builtins = { version = "0.1.0", optional = true }
